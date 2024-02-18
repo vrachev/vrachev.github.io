@@ -6,9 +6,6 @@ export default {
 			chubbo: ["Chubbo", "sans-serif"],
 		},
 		extend: {
-			maxWidth: {
-				'sm': '24rem', // Adjust the value to whatever you need
-			},
 		},
 	},
 	plugins: [

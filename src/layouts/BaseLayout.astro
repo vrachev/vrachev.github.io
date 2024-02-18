@@ -5,19 +5,24 @@ import "../styles/global.css";
 const { pageTitle } = Astro.props;
 ---
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <!-- <title>{pageTitle}</title> -->
   </head>
-  <body class="flex min-h-screen w-full flex-col p-4">
-    <main class="flex h-full w-full flex-1 mx-auto max-w-sm">
-      <Nav />
+  <body class="flex flex-col min-h-screen w-full p-4">
+    <!-- Using flex-1 on the main element to occupy all available space and center content -->
+    <Nav />
+    <main class="flex flex-1 flex-col items-center mx-auto max-w-xl p-10">
       <slot />
-      <Footer />
+      <div class="font-normal font-chubbo">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rhoncus erat vel neque sagittis cursus. Suspendisse ultrices lorem a dapibus tristique. Nulla molestie elementum volutpat. Fusce in magna elementum, tempor justo eget, molestie ex. Integer non nibh gravida, ornare eros semper, ullamcorper augue. Nullam at luctus odio. Duis fermentum ornare enim sed molestie. Sed egestas sapien vel feugiat rutrum. Suspendisse tincidunt sit amet orci et condimentum. Phasellus lacus ligula, dictum iaculis eleifend eu, tempus ut nibh.
+      </div>
     </main>
+    <Footer />
   </body>
 </html>

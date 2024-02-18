@@ -2,13 +2,15 @@
 import Logo from "../components/Logo.astro";
 ---
 
-<div class="flex flex-row space-y-10">
-  <Logo/>
-  <nav class="flex flex-row space-y-2 text-md font-normal font-chubbo">
-    <a href="/">home</a>
-    <a href="/whoami">whoami</a>
-    <a href="/notes">notes</a>
-    <a href="/favorites">favorites</a>
-    <a href="/thisweek">this week</a>
-  </nav>
-</div>
+<nav class="w-full">
+  <div class="flex justify-between items-center max-w-xl mx-auto w-full">
+    <Logo />
+    <div class="flex flex-wrap items-center space-x-2 text-md font-normal font-chubbo">
+      <a href="/">home</a>
+      <a href="/whoami">whoami</a>
+      <a href="/notes">notes</a>
+      <a href="/favorites">favorites</a>
+      <a href="/thisweek">this week</a>
+    </div>
+  </div>
+</nav>
