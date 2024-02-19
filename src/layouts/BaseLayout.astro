@@ -15,9 +15,8 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body class="flex flex-col min-h-screen w-full p-4">
-    <!-- Using flex-1 on the main element to occupy all available space and center content -->
     <Nav />
-    <main class="flex flex-1 flex-col items-center mx-auto max-w-xl p-10">
+    <main class="flex flex-1 flex-col items-center mx-auto max-w-3xl p-5 px-12">
       <slot />
     </main>
     <Footer />
