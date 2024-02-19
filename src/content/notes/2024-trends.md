@@ -17,9 +17,9 @@ I think the tide is changing, and we’re now seeing products with actual UX bak
 
 ## Some areas of focus:
 
-Fixing the CI/CD problem 
+Fixing the CI/CD problem
 
-We’re slowly realizing that CI/CD is being wildly misused and does not reduce developer iteration cycles. CI/CD is good at what it does, which is to make it easier to merge code changes into production, especially on large teams working on complex projects. But we’ve been abusing CI/CD by using it while working on code changes. It’s not the dev’s fault - the problem is that tech stacks have gotten very complex and can no longer be tested locally. So devs just push to GitHub and wait 15 minutes for tests to run. Nice for coffee runs, not so much for productivity.
+We're slowly realizing that CI/CD is being wildly misused and does not reduce developer iteration cycles. CI/CD is good at what it does, which is to make it easier to merge code changes into production, especially on large teams working on complex projects. But we’ve been abusing CI/CD by using it while working on code changes. It’s not the dev’s fault - the problem is that tech stacks have gotten very complex and can no longer be tested locally. So devs just push to GitHub and wait 15 minutes for tests to run. Nice for coffee runs, not so much for productivity.
 
 We’re starting to see this change, with solutions that enable developers to bypass CI/CD during active development but get similar feedback in seconds instead of minutes. There’s a number of approaches here. Local emulation is an interesting one, with a few examples like Wing Cloud, LocalStack, and System Initiative. We’re also seeing cloud-connected developer environments. There’s CDEs - like GitPod and GitHub codespaces which handle environment set up steps like installing dependencies. There’s also approaches to connect local environments with cloud resources - one example being Ampt, which has a REPL-like UX where every code change locally updates the live deployment (unique environment per branch) in real-time. 
 
