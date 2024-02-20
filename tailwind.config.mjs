@@ -1,14 +1,17 @@
-/** @type {import('tailwindcss').Config} */
+import markdownConfig from './doit.js';
+
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		fontFamily: {
 			chubbo: ["Chubbo", "sans-serif"],
+			barlow: ['Barlow', 'sans-serif'],
 		},
 		extend: {
 		},
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
+		markdownConfig(),
 	],
 }
