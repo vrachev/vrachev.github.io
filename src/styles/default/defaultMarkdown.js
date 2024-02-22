@@ -9,7 +9,7 @@ module.exports = {
     fontFamily: 'Barlow',
     fontSize: defaultTheme.fontSize['4xl'],
     fontWeight: defaultTheme.fontWeight.bold,
-    marginTop: 0,
+    marginTop: defaultTheme.spacing[0],
     marginBottom: defaultTheme.spacing[2],
   },
 
@@ -17,7 +17,7 @@ module.exports = {
     fontFamily: 'Barlow',
     fontSize: defaultTheme.fontSize['3xl'],
     fontWeight: defaultTheme.fontWeight.semibold,
-    marginTop: 0,
+    marginTop: defaultTheme.spacing[8],
     marginBottom: defaultTheme.spacing[2],
   },
 
@@ -25,7 +25,7 @@ module.exports = {
     fontFamily: 'Barlow',
     fontSize: defaultTheme.fontSize['2xl'],
     fontWeight: defaultTheme.fontWeight.medium,
-    marginTop: 0,
+    marginTop: defaultTheme.spacing[4],
     marginBottom: defaultTheme.spacing[2],
   },
 
@@ -33,7 +33,7 @@ module.exports = {
     fontFamily: 'Barlow',
     fontSize: defaultTheme.fontSize.xl,
     fontWeight: defaultTheme.fontWeight.bold,
-    marginTop: 0,
+    marginTop: defaultTheme.spacing[0],
     marginBottom: defaultTheme.spacing[2],
   },
 
@@ -41,7 +41,7 @@ module.exports = {
     fontFamily: 'Barlow',
     fontSize: defaultTheme.fontSize.lg,
     fontWeight: defaultTheme.fontWeight.bold,
-    marginTop: 0,
+    marginTop: defaultTheme.spacing[0],
     marginBottom: defaultTheme.spacing[2],
   },
 
@@ -49,14 +49,14 @@ module.exports = {
     fontFamily: 'Barlow',
     fontSize: defaultTheme.fontSize.base,
     fontWeight: defaultTheme.fontWeight.bold,
-    marginTop: 0,
+    marginTop: defaultTheme.spacing[0],
     marginBottom: defaultTheme.spacing[2],
   },
 
   p: {
     fontFamily: 'Barlow',
     fontWeight: defaultTheme.fontWeight.light,
-    marginTop: 0,
+    marginTop: defaultTheme.spacing[0],
     marginBottom: defaultTheme.spacing[4],
   },
 
@@ -105,8 +105,10 @@ module.exports = {
 
   ul: {
     fontFamily: 'Barlow',
+    fontWeight: defaultTheme.fontWeight.light,
     listStyleType: defaultTheme.listStyleType.disc,
-    listStylePosition: 'inside',
+    listStylePosition: 'outside',
+    marginLeft: defaultTheme.spacing[8],
     marginTop: defaultTheme.spacing[4],
     marginBottom: defaultTheme.spacing[4],
   },
@@ -124,14 +126,14 @@ module.exports = {
     width: '100%',
     color: defaultTheme.colors.gray[900],
     marginBottom: '1rem',
-    padding: 0,
+    padding: defaultTheme.spacing[0],
     borderCollapse: 'collapse',
     tr: {
       borderTopWidth: defaultTheme.borderWidth.default,
       borderColor: defaultTheme.colors.gray[700],
       backgroundColor: defaultTheme.colors.white,
-      margin: 0,
-      padding: 0,
+      margin: defaultTheme.spacing[0],
+      padding: defaultTheme.spacing[0],
       '&:nth-child(2n)': {
         backgroundColor: defaultTheme.colors.gray[100],
       },
@@ -140,26 +142,26 @@ module.exports = {
         borderWidth: defaultTheme.borderWidth.default,
         borderColor: defaultTheme.colors.gray[700],
         textAlign: 'left',
-        margin: 0,
+        margin: defaultTheme.spacing[0],
         padding: '6px 13px',
         '&:first-child': {
-          marginTop: 0,
+          marginTop: defaultTheme.spacing[0],
         },
         '&:last-child': {
-          marginBottom: 0,
+          marginBottom: defaultTheme.spacing[0],
         },
       },
       td: {
         borderWidth: defaultTheme.borderWidth.default,
         borderColor: defaultTheme.colors.gray[700],
         textAlign: 'left',
-        margin: 0,
+        margin: defaultTheme.spacing[0],
         padding: '6px 13px',
         '&:first-child': {
-          marginTop: 0,
+          marginTop: defaultTheme.spacing[0],
         },
         '&:last-child': {
-          marginBottom: 0,
+          marginBottom: defaultTheme.spacing[0],
         },
       },
     },

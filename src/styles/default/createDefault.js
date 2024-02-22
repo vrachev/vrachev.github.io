@@ -1,5 +1,5 @@
 const merge = require('lodash.merge');
-const defaultOptions = require('./markdown-config');
+const defaultOptions = require('./defaultMarkdown');
 
 const resolveOptions = userOptions => {
   return merge(defaultOptions, userOptions);

@@ -1,4 +1,4 @@
-import markdownConfig from './doit.js';
+import defaultMarkdown from './src/styles/default/createDefault.js';
 
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -12,6 +12,6 @@ export default {
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
-		markdownConfig(),
+		defaultMarkdown(),
 	],
 }
