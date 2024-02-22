@@ -1,3 +1,7 @@
+/**
+ * Copied from https://github.com/GeoffSelby/tailwind-md-base/blob/8697a9a3fa22148b3d3e4d7c7e2aafdcd93f0c40/src/defaultOptions.js
+ * with styling modifications
+ */
 const defaultTheme = require('tailwindcss/resolveConfig')(
   require('tailwindcss/defaultConfig'),
 ).theme;
