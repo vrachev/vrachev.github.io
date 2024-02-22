@@ -8,14 +8,20 @@ const allPosts = await getCollection('notes');
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-<ul>
-  {allPosts.map((post) => {
-    const fullSlug = `notes/${post.slug}`;
-    return (
-      <li>
-        <a href={fullSlug}>{post.data.title}</a>
-      </li>
-    );
-  })}
-</ul>
+  <div class="py-10 px-4 font-barlow">
+    <details open>
+      <summary><span class="font-bold">2024</span></summary>
+      <ul class="space-y-1  py-2">
+        {allPosts.map((post) => {
+          const fullSlug = `notes/${post.slug}`;
+          return (
+            <li class="grid grid-cols-[1fr,9fr] ml-6">
+              <p class="">{new Intl.DateTimeFormat('en-US', {month: "short", day: "numeric"}).format(post.data.pubDate)} </p>
+              <a href={fullSlug} class="font-medium italic underline">{post.data.title}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </details>
+  </div>
 </BaseLayout>

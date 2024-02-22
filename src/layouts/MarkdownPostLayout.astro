@@ -7,7 +7,7 @@ const { content } = Astro.props;
 
 <BaseLayout pageTitle={content.title}>
   <div class="markdown">
-    <h1>{content.title}</h1>
+    <h1 class=>{content.title}</h1>
     <br/>
     <slot />
   </div>
