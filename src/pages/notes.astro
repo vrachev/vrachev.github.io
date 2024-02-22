@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
-const pageTitle = "Notes";
+const pageTitle = "notes";
 const allPosts = await getCollection("notes");
 
 type PostCollection = typeof allPosts;
