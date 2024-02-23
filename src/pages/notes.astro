@@ -8,10 +8,8 @@ const allPosts = await getCollection("notes");
 
 type PostCollection = typeof allPosts;
 
-// Not the prettiest, but Astro's support for content sub-dirs does not include grouping,
-// only filtering. Here we get all posts from all years and group ourselves using 'pubDate'
 function groupPostsByYear(posts: PostCollection) {
-  return posts.reduce((acc: Record<string, PostCollection>, post) => {
+  const grouped = posts.reduce((acc: Record<string, PostCollection>, post) => {
     const year = new Date(post.data.pubDate).getFullYear().toString();
     if (!acc[year]) {
       acc[year] = [];
@@ -19,6 +17,12 @@ function groupPostsByYear(posts: PostCollection) {
     acc[year].push(post);
     return acc;
   }, {});
+
+  for (const year of Object.keys(grouped)) {
+    grouped[year].sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+  }
+
+  return grouped;
 }
 
 const postsByYear = groupPostsByYear(allPosts);
@@ -26,7 +30,7 @@ const postsByYear = groupPostsByYear(allPosts);
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="py-10 px-4 font-barlow">
-    {Object.entries(postsByYear).sort((a, b) => b[0].localeCompare(a[0])).map(([year, posts]) => (
+    {Object.entries(postsByYear).sort((a, b) => parseInt(b[0]) - parseInt(a[0])).map(([year, posts]) => (
       <details open class="mb-4">
         <summary><span class="font-bold">{year}</span></summary>
         <ul class="space-y-1 py-2">
@@ -34,7 +38,7 @@ const postsByYear = groupPostsByYear(allPosts);
             const fullSlug = `notes/${post.slug}`;
             return (
               <li class="grid grid-cols-[1fr,9fr] ml-6">
-                <p class="">{new Intl.DateTimeFormat('en-US', {month: "short", day: "numeric"}).format(post.data.pubDate)}</p>
+                <p class="">{new Intl.DateTimeFormat('en-US', {month: "short", day: "numeric", timeZone: 'UTC'}).format(new Date(post.data.pubDate))}</p>
                 <a href={fullSlug} class="font-medium italic underline">{post.data.title}</a>
               </li>
             );
