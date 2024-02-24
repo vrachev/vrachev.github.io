@@ -311,35 +311,64 @@ const worldAfterCapital: Book = {
  *            Steve Jobs, The World After Capital, How to Change Your Mind, (multiple) Murakami, 
  */
 
-const Books: Book[] = [];
+const books: Book[] = [
+  asoiaf,
+  creativeDestruction,
+  innovatorsDilemma,
+  energySwitch,
+  stalin1,
+  changeYourMind,
+  snowball,
+  steveJobs,
+  elonMusk,
+  wildSheepChase,
+  liarsPoker,
+  hubris,
+  worldAfterCapital,
+];
 ---
 
-<BaseLayout pageTitle="favorites" class="font-barlow">
-  <div class="space-y-4">
-    <h2 class="text-center">some of my faves</h2>
-    <div>
-      <h3>podcasts<span class="text-base"><sup><a href="#footnote-1" class="underline">1</a></sup></span></h3>
-      <ul class="space-y-1">
-        {podcasts.map((pod) => {
-          return (
-            <li class="grid grid-cols-[1fr,2fr,5fr] gap-x-2">
-              <p>{'★'.repeat(pod.stars) + '☆'.repeat(5 - pod.stars)}</p>
-              <a href={pod.url} class="underline">{pod.name}</a>
-              <p>[<span class="font-semibold">{pod.category}</span>] {pod.thoughts}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-    <div>
-      <h3>books</h3>
-
-    </div>
-    <div class="space-y-4" id="footnote-1">
-      <h3>footnotes</h3>
-      <ol class="list-decimal ml-4">
-        <li>I listen to a lot of podcasts. These are the ones I listen to consistently, hence why all are 4 or 5 stars.</li>
-      </ol>
+<BaseLayout pageTitle="favorites">
+  <div class="font-barlow">
+    <h1 class="text-center mb-6">some of my faves</h1>
+    <div class="space-y-10">
+      <details open>
+        <summary><h2 class="inline">podcasts<span class="text-base"><sup><a href="#footnote-1" class="underline">1</a></sup></span></h3></summary>
+        <ul class="space-y-1 my-2 ml-3">
+          {podcasts.map((pod) => {
+            return (
+              <li class="grid grid-cols-[1fr,2fr,5fr] gap-x-2">
+                <p>{'★'.repeat(pod.stars) + '☆'.repeat(5 - pod.stars)}</p>
+                <a href={pod.url} class="underline">{pod.name}</a>
+                <p>[<span class="font-semibold">{pod.category}</span>] {pod.thoughts}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </details>
+      <div>
+        <details open>
+          <summary><h2 class="inline">books<span class="text-base"><sup><a href="#footnote-2" class="underline">2</a></sup></span></h3></summary>
+          <ul class="space-y-1 my-2 ml-3">
+            {books.map((book) => {
+              return (
+                <li class="grid grid-cols-[1fr,2fr,5fr] gap-x-2">
+                  <p>{'★'.repeat(book.stars) + '☆'.repeat(5 - book.stars)}</p>
+                  <a href={book.url} class="underline">{book.name}</a>
+                  <p>[<span class="font-semibold">{book.category}</span>] {book.thoughts}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </details>
+      </div>
+      <div class="space-y-4">
+        <h3>footnotes</h3>
+        <ol class="list-decimal ml-4">
+          <li id="footnote-1">I listen to a lot of podcasts. These are the ones I listen to consistently, hence why all are 4 or 5 stars.</li>
+          <li id="footnote-2">More <a href="/books" class="underline">books</a>. Like with podcasts, these are my favorites, so all are 4 or 5 stars.</li>
+        </ol>
+      </div>
     </div>
   </div>
 
