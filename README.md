@@ -1,5 +1,4 @@
-# [vladrachev.com](vladrachev.com)
-
+# [vladrachev.com](http://vladrachev.com)
 My personal website. Built with [Astro](https://astro.build/) and [Tailwindcss](https://tailwindcss.com/). I am not a webdev, so excuse any shoddy code. Not intended as a starter theme.
 
 ## Commands
