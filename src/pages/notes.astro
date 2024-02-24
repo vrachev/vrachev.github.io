@@ -8,6 +8,8 @@ const allPosts = await getCollection("notes");
 
 type PostCollection = typeof allPosts;
 
+// Not the prettiest, but Astro's support for content sub-dirs does not include grouping,
+// only filtering. Here we get all posts from all years and group ourselves using 'pubDate'.
 function groupPostsByYear(posts: PostCollection) {
   const grouped = posts.reduce((acc: Record<string, PostCollection>, post) => {
     const year = new Date(post.data.pubDate).getFullYear().toString();
