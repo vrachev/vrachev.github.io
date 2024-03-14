@@ -1,9 +1,79 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import "../styles/global.css";
+
+interface PostData {
+  title: string;
+  pubDate: Date;
+}
+
+const recentPosts = await getCollection("notes").then((collection) =>
+  collection
+    .sort(
+      (a, b) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+    )
+    .slice(0, 2)
+    .map((post) => ({ ...post, data: post.data as PostData })),
+);
+
+recentPosts.forEach((post) => console.log(post.data.title));
+---
+
 ---
 
 <BaseLayout pageTitle="vlad rachev">
-  <div class="font-normal font-chubbo">
+  <div class="flex justify-between">
+    <div class="font-normal font-chubbo w-1/2">
+      <img
+        src="/baby_pic.jpg"
+        alt="Baby Picture"
+        class="w-full"
+        style="filter: grayscale(50%);"
+      />
+    </div>
+    <div class="w-1/2 ml-5 font-barlow">
+      <div class="border-t border-gray-300 my-4"></div>
+      <div class="bg-[#f0f0f0] p-4 shadow rounded-lg">
+        <p>
+          Hi! I'm Vlad.
+          <br />
+          <br />
+          I invest in early stage business-to-developer startups at <a
+            href="https://irregex.vc/"
+            target="_blank"
+            class="font-medium underline">Irregular Expressions</a
+          >.
+          <br />
+          <br />
+          If you're working on something developers love to use, please reach out.
+        </p>
+      </div>
+      <div class="bg-[#f0f0f0] p-4 shadow rounded-lg mt-8">
+        <h3 class="font-medium">Recent Posts</h3>
+        <ul class="space-y-1">
+          {
+            recentPosts.map((post) => (
+              <li class="grid grid-cols-[2fr,9fr]">
+                <p class="text-sm text-gray-600">
+                  {new Intl.DateTimeFormat("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    timeZone: "UTC",
+                  }).format(new Date(post.data.pubDate))}
+                </p>
+                <a
+                  href={`/notes/${post.slug}`}
+                  class="font-medium italic underline"
+                >
+                  {post.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
   </div>
 </BaseLayout>

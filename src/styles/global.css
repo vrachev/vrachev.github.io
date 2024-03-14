@@ -27,6 +27,18 @@
   font-weight: 500; /* Corrected to numerical value for medium */
 }
 
+@font-face {
+  font-family: "Iosevka";
+  src: url('/public/fonts/iosevka/fonts/Iosevka-Regular.ttc') format('truetype');
+  font-weight: 400; /* Use numerical value for normal */
+}
+
+@font-face {
+  font-family: "Iosevka";
+  src: url('/public/fonts/iosevka/fonts/Iosevka-Light.ttc') format('truetype');
+  font-weight: 300; /* Use numerical value for normal */
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -49,4 +61,8 @@ h4 {
   font-size: 1.125rem;
   font-weight: 400;
   margin-bottom: 0.75rem;
+}
+
+a:hover {
+  color: #9d1b1b;
 }
