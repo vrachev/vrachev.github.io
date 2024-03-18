@@ -14,53 +14,67 @@ const recentPosts = await getCollection("notes").then((collection) =>
       (a, b) =>
         new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
     )
-    .slice(0, 2)
+    .slice(0, 3)
     .map((post) => ({ ...post, data: post.data as PostData })),
 );
 
 recentPosts.forEach((post) => console.log(post.data.title));
 ---
+
 <BaseLayout pageTitle="vlad rachev">
-  <div class="flex justify-between">
-    <div class="font-normal font-chubbo w-1/2">
-      <img
-        src="/baby_pic.jpg"
-        alt="Baby Picture"
-        class="w-full"
-        style="filter: grayscale(50%);"
-      />
-    </div>
-    <div class="w-1/2 ml-5 font-barlow">
-      <div class="border-t border-gray-300 my-4"></div>
-      <p>
-        Hi! I'm Vlad.
-        <br />
-        <br />
-        I invest in early stage business-to-developer startups at <a
-          href="https://irregex.vc/"
-          target="_blank"
-          class="font-medium underline">Irregular Expressions</a
-        >.
-        <br />
-        <br />
-        If you're working on something developers love to use, please reach out.
-      </p>
-      <div class="mt-8">
-        <h3 class="font-medium">Recent Posts</h3>
+  <div class="flex justify-center">
+    <div class="font-barlow space-y-8">
+      <div>
+        <p>
+          <h3 class="pb-6 text-center">Hi! I'm Vlad.</h3>
+          I invest in early stage business-to-developer startups at <a
+            href="https://irregex.vc/"
+            target="_blank"
+            class="font-medium underline">Irregular Expressions</a
+          >.
+          <br />
+          <br />
+          If you're working on something developers love to use, please reach out.
+          <br />
+          <br />
+          Outside of investing & normal non-work activities, I also have a few interests:
+        </p>
+        <ul class="mt-1 list-disc list-inside">
+          <li>Watching the Celtics & playing fantasy basketball</li>
+          <li>History, in particular about WW2 & the USSR</li>
+          <li>Clean energy, the grid & the changing climate landscape</li>
+          <li>Urban planning</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-medium">recent posts</h3>
         <ul class="space-y-1">
-          {recentPosts.map((post) => (
-            <li class="grid grid-cols-[2fr,9fr]">
-              <p class="text-sm text-gray-600">
-                {new Intl.DateTimeFormat('en-US', {month: "short", day: "numeric", timeZone: 'UTC'}).format(new Date(post.data.pubDate))}
-              </p>
-              <a
-                href={`/notes/${post.slug}`}
-                class="font-medium italic underline"
-              >
-                {post.data.title}
-              </a>
-            </li>
-          ))}
+          {
+            recentPosts.map((post) => (
+              <li class="grid grid-cols-[2fr,9fr]">
+                <p class="text-sm text-gray-600">
+                  {new Intl.DateTimeFormat("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    timeZone: "UTC",
+                  }).format(new Date(post.data.pubDate))}
+                </p>
+                <a
+                  href={`/notes/${post.slug}`}
+                  class="font-medium italic underline"
+                >
+                  {post.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-medium">currently reading</h3>
+        <ul class="mt-1 list-disc list-inside">
+          <li>Stalin: Waiting for Hitler, 1929-1941</li>
+          <li>Chip War: The Fight for the World's Most Critical Technology</li>
         </ul>
       </div>
     </div>

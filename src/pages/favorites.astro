@@ -2,321 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
-
-// Podcasts I listen to, my thoughts and ranking
-type Stars = 0 | 1 | 2 | 3 | 4 | 5;
-type Podcast = {
-  name: string;
-  category: string;
-  url: URL;
-  stars: Stars;
-  thoughts: string;
-}
-const volts: Podcast = {
-  name: "Volts",
-  category: "Clean Energy",
-  url: new URL("https://open.spotify.com/show/3dYMY5T3UZJLDKFQaA3tFS"),
-  stars: 5,
-  thoughts: "The best podcast on clean energy. Unbiased and exhuastive in coverage.",
-};
-
-const thinkingBasketball: Podcast = {
-  name: "Thinking Basketball",
-  category: "Basketball",
-  url: new URL("https://open.spotify.com/show/12kpkAvUj6LGxzViDIH0qH"),
-  stars: 5,
-  thoughts: "Tune in for the rigorous analytics, stay for the nonstop banter.",
-};
-
-const oddLots: Podcast = {
-  name: "Odd Lots",
-  category: "Business",
-  url: new URL("https://open.spotify.com/show/1te7oSFyRVekxMBJUSethH?si=d2d82f97ac9342f5"),
-  stars: 5,
-  thoughts: "Warning: side effects include learning way too much about storing hydrogen in giant salt caverns.",
-};
-
-const fiveThirtyEight: Podcast = {
-  name: "FiveThirtyEight",
-  category: "Politics",
-  url: new URL("https://open.spotify.com/show/3C0iP88KSoGZk5KNWmuyF1?si=def0be1da25842b3"),
-  stars: 5,
-  thoughts: "Make Politics Fun Again.",
-};
-
-const ventureUnlocked: Podcast = {
-  name: "Venture Unlocked",
-  category: "VC",
-  url: new URL("https://open.spotify.com/show/1Z1jDhQG5g3BWh7hPtHAY8?si=6d9d8bae45484a80"),
-  stars: 5,
-  thoughts: "Down to brass tacks, no frills interviews with VC/LP leaders.",
-};
-
-const straightUpChicagoInvestor: Podcast = {
-  name: "Straight Up Chicago Investor",
-  category: "Real Estate",
-  url: new URL("https://open.spotify.com/show/28VVT9DqcUiKZA9tQLiJGZ?si=d285378d497142fc"),
-  stars: 5,
-  thoughts: "For the 2 of you who live in Chicago and think real estate is cool.",
-};
-
-const investLikeTheBest: Podcast = {
-  name: "Invest Like the Best",
-  category: "Investing",
-  url: new URL("https://open.spotify.com/show/22fi0RqfoBACCuQDv97wFO?si=c38f93f6219d42f2"),
-  stars: 5,
-  thoughts: "Great guests, great questions. Not much to add."
-}
-
-const catalyst: Podcast = {
-  name: "Catalyst",
-  category: "Clean Energy",
-  url: new URL("https://open.spotify.com/show/4C5Qx3wJn0GeTnDxIVYcAR?si=caa10b1084b84397"),
-  stars: 5,
-  thoughts: "Shayle is one of the *good* VCs. He gets it."
-};
-
-const twentyVC: Podcast = {
-  name: "20VC",
-  category: "VC",
-  url: new URL("https://open.spotify.com/show/6AVgt0Cx1Rnzrg2CBbEygM?si=5cfd7ff493b14a60"),
-  stars: 5,
-  thoughts: "Harry has an abrasive personality, but it means we get to hear great guests answer hard questions.",
-};
-
-const warOnTheRocks: Podcast = {
-  name: "War on the Rocks",
-  category: "Defense",
-  url: new URL("https://open.spotify.com/show/5ec5TBvVh3w4aobgx0qgYj?si=0d3324740cc747a9"),
-  stars: 5,
-  thoughts: "The war in Ukraine has re-instilled public interest in defense. War on the Rocks provides an interesting dive into that side of the world.",
-};
-
-const russiaContingency: Podcast = {
-  name: "Russia Contingency",
-  category: "Defense",
-  url: new URL("https://warontherocks.com/premium/therussiacontingency/"),
-  stars: 4,
-  thoughts: "Great premium pod from WotR. 4 stars only Michael Kofman has a bajillion other jobs and can only release a pod once in a while.",
-};
-
-const acquired: Podcast = {
-  name: "Acquired",
-  category: "Business",
-  url: new URL("https://open.spotify.com/show/7Fj0XEuUQLUqoMZQdsLXqp?si=a58ff9ae8a5a4c4a"),
-  stars: 4,
-  thoughts: "Have 4 hours to learn the ins and outs of your favorite legendary company? This is the one for you.",
-};
-
-const tfr: Podcast = {
-  name: "The Full Ratchet",
-  category: "VC",
-  url: new URL("https://open.spotify.com/show/31D2vzsDluqyobfpTbnTeY?si=d950071aa3d3466c"),
-  stars: 4,
-  thoughts: "Another no frills podcast on VC, with hints of the midwest.",
-};
-
-const yaidd: Podcast = {
-  name: "Yet Another Infra Deep Dive",
-  category: "Dev Infra",
-  url: new URL("https://open.spotify.com/show/7qZ7hDmHEQdAOLaJvi7S9o?si=fd4ee22b4de04ec1"),
-  stars: 4,
-  thoughts: "At the forefront of structural changes in developer infrastructure.",
-};
-
-const yc: Podcast = {
-  name: "Y Combinator",
-  category: "Startups",
-  url: new URL("https://open.spotify.com/show/1tgqafxZAB0Bjd8nkwVtE4?si=aa29c96fb8044e45"),
-  stars: 4,
-  thoughts: "Short, interesting episodes on startup concepts."
-}
-
-
-const podcasts: Podcast[] = [
-  volts,
-  thinkingBasketball,
-  oddLots,
-  fiveThirtyEight,
-  ventureUnlocked,
-  straightUpChicagoInvestor,
-  investLikeTheBest,
-  catalyst,
-  twentyVC,
-  warOnTheRocks,
-  russiaContingency,
-  acquired,
-  tfr,
-  yaidd,
-  yc,
-];
-
-type Book = {
-  name: string;
-  category: string;
-  url: URL;
-  stars: Stars;
-  read: Date;
-  fave: boolean;
-  thoughts?: string;
-}
-
-const asoiaf: Book = {
-  name: "A Song of Ice and Fire (1-5)",
-  category: "Fiction",
-  url: new URL("https://www.goodreads.com/book/show/12177850-a-song-of-ice-and-fire"),
-  stars: 5,
-  read: new Date(2023),
-  fave: true,
-  thoughts: "The universe GRRM has built truly feels alive.",
-};
-
-const creativeDestruction: Book = {
-  name: "The Power of Creative Destruction",
-  category: "Economics",
-  url: new URL("https://www.goodreads.com/book/show/55503076-the-power-of-creative-destruction"),
-  stars: 5,
-  read: new Date(2021),
-  fave: true,
-  thoughts: "Introduced me to the idea of creative-destruction and the power of an economic model that balances opportunities for rent-seeking and rent-destruction.",
-};
-
-const innovatorsDilemma: Book = {
-  name: "The Innovator's Dilemma",
-  category: "Economics",
-  url: new URL("https://www.goodreads.com/book/show/2615.The_Innovator_s_Dilemma"),
-  stars: 5,
-  read: new Date(2020),
-  fave: true,
-  thoughts: "A classic that's shaped the tech industry. Should be instinctual at this point, yet I still find myself coming to different conclusions when I consciously incorporate Christensen's lessons.",
-};
-
-const energySwitch: Book = {
-  name: "The Energy Switch",
-  category: "Energy",
-  url: new URL("https://www.goodreads.com/book/show/54982958-the-energy-switch"),
-  stars: 5,
-  read: new Date(2020),
-  fave: true,
-  thoughts: "A comprehensive and tangible view of the omnipresent yet amorphous system we call 'The Grid' and it's evolution as we move away from traditional fossil fuel generation.",
-};
-
-const stalin1: Book = {
-  name: "Stalin, Volume 1",
-  category: "History",
-  url: new URL("https://www.goodreads.com/en/book/show/20821221"),
-  stars: 5,
-  read: new Date(2023),
-  fave: true,
-  thoughts: 
-  "I love history, with WW2 and the USSR at the top of that list (I'm half-Russian). This series is a slog but really gets at the why's behind the USSR, Russia and Stalin himself. \
-  As an aside, the 1917 revolution reads straight out of a fiction novel and that part of the book was an absolute page-turner."
-};
-
-const changeYourMind: Book = {
-  name: "How to Change Your Mind",
-  category: "Psychology",
-  url: new URL("https://www.goodreads.com/en/book/show/36613747"),
-  stars: 5,
-  read: new Date(2018),
-  fave: true,
-  thoughts: "Straight-laced boomer journalist explores psychadelics and the potential benefits they may bring. Michael Pollan goes in without prior experience or assumptions, \
-  and changes his mind in more than one way.",
-};
-
-const snowball: Book = {
-  name: "Snowball",
-  category: "Biography",
-  url: new URL("https://www.goodreads.com/book/show/2054761.The_Snowball"),
-  stars: 5,
-  read: new Date(2021),
-  fave: true,
-  thoughts: "In-depth biography of Warren Buffett. Must read for all you Buffett stans.",
-};
-
-const steveJobs: Book = {
-  name: "Steve Jobs",
-  category: "Biography",
-  url: new URL("https://www.goodreads.com/book/show/11084145-steve-jobs"),
-  stars: 5,
-  read: new Date("2021"),
-  fave: true,
-  thoughts: "Severe personality flaws aside, there are a lot of great insights to draw from the way Steve Jobs operates, the emphasis he places on user-experience and \
-  how sheer willpower can move mountains.",
-};
-
-const elonMusk: Book = {
-  name: "Elon Musk",
-  category: "Biography",
-  url: new URL("https://www.goodreads.com/en/book/show/122765395"),
-  stars: 5,
-  read: new Date("2023"),
-  fave: true,
-  thoughts: "Elon shares lots of parallels with Steve Jobs: dreadful personality flaws, a habit of shooting yourself in the foot, undying willpower and first-principles reasoning. \
-  There's some real nuggets of wisdom in the way Elon approaches problems, more so than Jobs. If you ignore his social media outbursts (I've long muted him on twitter), you might \
-  find this book pretty enjoyable.",
-};
-
-const wildSheepChase: Book = {
-  name: "A Wild Sheep Chase",
-  category: "Fiction",
-  url: new URL("https://www.goodreads.com/book/show/11298.A_Wild_Sheep_Chase"),
-  stars: 5,
-  read: new Date("2018"),
-  fave: true,
-  thoughts: "I don't understand Murakami books, yet I can't look away. This is the first one I read and though I remember very little of it, I remember a feeling of nostalgia \
-  for a weird upside down magical world that only exists in Murakami's mind.",
-};
-
-const liarsPoker: Book = {
-  name: "Liar's Poker",
-  category: "Memoir",
-  url: new URL("https://www.goodreads.com/en/book/show/7865083"),
-  stars: 5,
-  read: new Date("2018"),
-  fave: true,
-  thoughts: "Michael Lewis set out to write a memoir of the debauchry and value destruction he saw at Wall Street. Instead kids \"read my book as a how-to manual\". \
-  I can't blame them - The Big Swinging Dicks were having all the fun."
-};
-
-const hubris: Book = {
-  name: "Hubris",
-  category: "History",
-  url: new URL("https://www.goodreads.com/book/show/237255.Hubris"),
-  stars: 4,
-  read: new Date("2022"),
-  fave: true,
-  thoughts: "I guess the Iraq War is technically history.. Anyways, it was interesting and infuriating to read about the utter idiocy that lead to the Iraq War, as well as the poor \
-  tactical decisions that dug the US deeper and deeper into failure.",
-};
-
-const worldAfterCapital: Book = {
-  name: "World After Capital",
-  category: "Economics",
-  url: new URL("https://www.goodreads.com/en/book/show/29890867"),
-  stars: 4,
-  read: new Date("2021"),
-  fave: true,
-  thoughts: "Splits humanity in 3 epochs based on the prevailing resource scarcity: (1) Land (hunter-gather up until Industrial Revolution, (2) Industrial Capital, (3) Human Attention. \
-  It's an interesting, albeit surface-level, view into a world where the marginal cost of an increasing number of goods is 0 (eg: viewing a youtube video has a marginal cost of essentialy 0).",
-};
-
-
-const books: Book[] = [
-  asoiaf,
-  creativeDestruction,
-  innovatorsDilemma,
-  energySwitch,
-  stalin1,
-  changeYourMind,
-  snowball,
-  steveJobs,
-  elonMusk,
-  wildSheepChase,
-  liarsPoker,
-  hubris,
-  worldAfterCapital,
-];
+import { books, type Book } from "@/src/lib/books";
+import { podcasts, type Podcast } from "@/src/lib/podcasts";
 ---
 
 <BaseLayout pageTitle="favorites">
@@ -324,43 +11,74 @@ const books: Book[] = [
     <h1 class="text-center mb-6">some of my faves</h1>
     <div class="space-y-10">
       <details open>
-        <summary><h2 class="inline">podcasts<span class="text-base"><sup><a href="#footnote-1" class="underline">1</a></sup></span></h3></summary>
+        <summary
+          ><h2 class="inline">
+            podcasts<span class="text-base"
+              ><sup><a href="#footnote-1" class="underline">1</a></sup></span
+            >
+          </h2></summary
+        >
         <ul class="space-y-1 my-2 ml-3">
-          {podcasts.map((pod) => {
-            return (
-              <li class="grid grid-cols-[1fr,2fr,5fr] gap-x-2">
-                <p>{'★'.repeat(pod.stars) + '☆'.repeat(5 - pod.stars)}</p>
-                <a href={pod.url} class="underline">{pod.name}</a>
-                <p>[<span class="font-semibold">{pod.category}</span>] {pod.thoughts}</p>
-              </li>
-            );
-          })}
+          {
+            podcasts.map((pod: Podcast) => {
+              return (
+                <li class="grid grid-cols-[1fr,2fr,5fr] gap-x-2">
+                  <p>{"★".repeat(pod.stars) + "☆".repeat(5 - pod.stars)}</p>
+                  <a href={pod.url} class="underline">
+                    {pod.name}
+                  </a>
+                  <p>
+                    [<span class="font-semibold">{pod.category}</span>]{" "}
+                    {pod.thoughts}
+                  </p>
+                </li>
+              );
+            })
+          }
         </ul>
       </details>
       <div>
         <details open>
-          <summary><h2 class="inline">books<span class="text-base"><sup><a href="#footnote-2" class="underline">2</a></sup></span></h3></summary>
+          <summary
+            ><h2 class="inline">
+              books<span class="text-base"
+                ><sup><a href="#footnote-2" class="underline">2</a></sup></span
+              >
+            </h2></summary
+          >
           <ul class="space-y-1 my-2 ml-3">
-            {books.map((book) => {
-              return (
-                <li class="grid grid-cols-[1fr,2fr,5fr] gap-x-2">
-                  <p>{'★'.repeat(book.stars) + '☆'.repeat(5 - book.stars)}</p>
-                  <a href={book.url} class="underline">{book.name}</a>
-                  <p>[<span class="font-semibold">{book.category}</span>] {book.thoughts}</p>
-                </li>
-              );
-            })}
+            {
+              books.map((book: Book) => {
+                return (
+                  <li class="grid grid-cols-[1fr,2fr,5fr] gap-x-2">
+                    <p>{"★".repeat(book.stars) + "☆".repeat(5 - book.stars)}</p>
+                    <a href={book.url} class="underline">
+                      {book.name}
+                    </a>
+                    <p>
+                      [<span class="font-semibold">{book.category}</span>]{" "}
+                      {book.thoughts}
+                    </p>
+                  </li>
+                );
+              })
+            }
           </ul>
         </details>
       </div>
       <div class="space-y-4">
         <h3>footnotes</h3>
         <ol class="list-decimal ml-4">
-          <li id="footnote-1">I listen to a lot of podcasts. These are the ones I listen to consistently, hence why all are 4 or 5 stars.</li>
-          <li id="footnote-2">More <a href="/books" class="underline">books</a>. Like with podcasts, these are my favorites, so all have many stars.</li>
+          <li id="footnote-1">
+            I listen to a lot of podcasts. These are the ones I listen to
+            consistently, hence why all are 4 or 5 stars.
+          </li>
+          <li id="footnote-2">
+            More <a href="/books" class="underline">books</a>. Like with
+            podcasts, these are my favorites, so all have many stars.
+          </li>
         </ol>
       </div>
     </div>
   </div>
-
 </BaseLayout>
