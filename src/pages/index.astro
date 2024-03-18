@@ -18,11 +18,16 @@ const recentPosts = await getCollection("notes").then((collection) =>
     .map((post) => ({ ...post, data: post.data as PostData })),
 );
 
-recentPosts.forEach((post) => console.log(post.data.title));
+import { books, type Book } from "@/src/lib/books";
+const currentlyReading1 =
+  books["Stalin: Waiting for Hitler 1929-1941 - book 2"];
+const currentlyReading2 =
+  books["Chip War: The Fight for the World's Most Critical Technology"];
+
 ---
 
 <BaseLayout pageTitle="vlad rachev">
-  <div class="flex justify-center">
+  <div class="flex justify-center px-0 lg:px-12">
     <div class="font-barlow space-y-8">
       <div>
         <p>
@@ -51,8 +56,8 @@ recentPosts.forEach((post) => console.log(post.data.title));
         <ul class="space-y-1">
           {
             recentPosts.map((post) => (
-              <li class="grid grid-cols-[2fr,9fr]">
-                <p class="text-sm text-gray-600">
+              <li class="grid grid-cols-[1fr,9fr]">
+                <p class="text-gray-600">
                   {new Intl.DateTimeFormat("en-US", {
                     month: "short",
                     day: "numeric",
@@ -72,9 +77,31 @@ recentPosts.forEach((post) => console.log(post.data.title));
       </div>
       <div>
         <h3 class="font-medium">currently reading</h3>
-        <ul class="mt-1 list-disc list-inside">
-          <li>Stalin: Waiting for Hitler, 1929-1941</li>
-          <li>Chip War: The Fight for the World's Most Critical Technology</li>
+        <ul class="space-y-1">
+          <li class="grid grid-cols-[2fr,9fr] gap-x-4">
+            <p class="text-gray-600">
+              {currentlyReading1.author}
+            </p>
+            <a
+              href={currentlyReading1.url}
+              target="_blank"
+              class="font-medium italic underline"
+            >
+              {currentlyReading1.name}
+            </a>
+          </li>
+          <li class="grid grid-cols-[2fr,9fr] gap-x-4">
+            <p class="text-gray-600">
+              {currentlyReading2.author}
+            </p>
+            <a
+              href={currentlyReading2.url}
+              target="_blank"
+              class="font-medium italic underline"
+            >
+              {currentlyReading2.name}
+            </a>
+          </li>
         </ul>
       </div>
     </div>
