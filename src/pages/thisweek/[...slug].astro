@@ -1,0 +1,50 @@
+---
+import BaseLayout from "@/src/layouts/BaseLayout.astro";
+import "@/src/styles/global.css";
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  // Assuming you have a function to list all weeks
+  const weeks = await getCollection("thisweek");
+  return weeks.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const startDate = entry.data.startDate;
+const endDate = entry.data.endDate;
+
+console.log(entry.slug);
+---
+
+<BaseLayout pageTitle={`Week of ${startDate}`}>
+  <div
+    class="font-code_mono text-sm bg-[rgba(220,204,204,0.5)] rounded-lg p-4 shadow"
+  >
+    <h2>status</h2>
+    <div class="grid grid-cols-[auto,1fr]">
+      <div>
+        <p>
+          last updated: <span class="italic underline"
+            >{new Date().toLocaleDateString("en-US")}</span
+          >
+        </p>
+        <p>
+          week: <span class="italic underline">{startDate}</span> to <span
+            class="italic underline">{endDate}</span
+          >
+        </p>
+      </div>
+      <!-- Add navigation to previous and next weeks -->
+    </div>
+    <article class="prose">
+      <MarkdownPostLayout content={entry.data}>
+        <Content />
+      </MarkdownPostLayout>
+    </article>
+  </div>
+</BaseLayout>

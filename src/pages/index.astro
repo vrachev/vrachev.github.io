@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import "../styles/global.css";
+import { books, type Book } from "@/src/lib/books";
 
 interface PostData {
   title: string;
@@ -18,12 +19,10 @@ const recentPosts = await getCollection("notes").then((collection) =>
     .map((post) => ({ ...post, data: post.data as PostData })),
 );
 
-import { books, type Book } from "@/src/lib/books";
 const currentlyReading1 =
   books["Stalin: Waiting for Hitler 1929-1941 - book 2"];
 const currentlyReading2 =
   books["Chip War: The Fight for the World's Most Critical Technology"];
-
 ---
 
 <BaseLayout pageTitle="vlad rachev">

@@ -13,7 +13,20 @@ const notesCollection = defineCollection({
   })
 });
 
+const thisWeekCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    startDate: z.date(),
+    endDate: z.date(),
+    title: z.string(),
+    // description: z.string(),
+    // author: z.string(),
+    // tags: z.array(z.string())
+  })
+});
+
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   'notes': notesCollection,
+  'thisweek': thisWeekCollection,
 };
