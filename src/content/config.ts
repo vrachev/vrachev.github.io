@@ -18,7 +18,6 @@ const thisWeekCollection = defineCollection({
   schema: z.object({
     startDate: z.date(),
     endDate: z.date(),
-    title: z.string(),
     // description: z.string(),
     // author: z.string(),
     // tags: z.array(z.string())
