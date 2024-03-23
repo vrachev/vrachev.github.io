@@ -1,6 +1,7 @@
 # Todos
 
 * **P0** Figure out structure of /thisweek.
+* **P1** Figure out sensible linting.
 * **P1** Add RSS support for blog posts.
 * **P1** Create /books page that contains all books I've read since ~2018.
 * **P1** Publish.

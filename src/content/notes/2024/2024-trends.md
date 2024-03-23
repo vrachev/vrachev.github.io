@@ -17,7 +17,7 @@ Some of you might be thinking, “isn’t this just DevEx? Haven’t we had dedi
 
 I think the tide is changing, and we’re now seeing products with actual UX baked into it. Between 2010-2020 companies focused on creating infrastructure that scales - we’ve more or less done that, and now the focus is shifting to infrastructure that is pleasant to work with and improves developer speed.
 
-Some areas of focus:
+**Some areas of focus**:
 
 ### Fixing the CI/CD problem
 
