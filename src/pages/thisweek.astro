@@ -1,55 +1,17 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/global.css";
----
+import { getCollection } from 'astro:content';
 
-<BaseLayout pageTitle="this week">
-  <div
-    class="font-code_mono text-sm bg-[rgba(220,204,204,0.5)] rounded-lg p-4 shadow">
-    <h2>status</h2>
-    <div class="grid grid-cols-[auto,1fr]">
-      <div>
-        <p>
-          last updated: <span class="italic underline"
-            >{
-              new Date("March 19, 2024").toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            }</span
-          >
-        </p>
-        <p>
-          week: <span class="italic underline"
-            >{
-              new Date(
-                new Date().setDate(new Date().getDate() - new Date().getDay()),
-              ).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            }</span
-          > to <span class="italic underline"
-            >{
-              new Date(
-                new Date().setDate(
-                  new Date().getDate() - new Date().getDay() + 6,
-                ),
-              ).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            }</span
-          >
-        </p>
-      </div>
-      <div class="flex flex-col items-end">
-        <p>&lt; next week </p>
-        <p>prev week &gt;</p>
-      </div>
-    </div>
-  </div>
-</BaseLayout>
+// Fetch all posts from the 'thisweek' collection
+const thisWeekPosts = await getCollection('thisweek');
+
+// Sort posts by startDate in descending order to get the latest post first
+const sortedPosts = thisWeekPosts.sort((a, b) => {
+  return new Date(b.data.startDate).getTime() - new Date(a.data.startDate).getTime();
+});
+
+// Get the URL of the latest post
+const latestPostUrl = sortedPosts.length > 0 ? `/thisweek/${sortedPosts[0].slug}` : '/';
+
+// Redirect to it
+return Astro.redirect(latestPostUrl);
+---
