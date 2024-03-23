@@ -1,11 +1,10 @@
 ---
 import BaseLayout from "@/src/layouts/BaseLayout.astro";
 import "@/src/styles/global.css";
+import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import type { Params } from 'astro';
 
 export async function getStaticPaths() {
-  // Assuming you have a function to list all weeks
   const weeks = await getCollection("thisweek");
   return weeks.map((entry) => ({
     params: { slug: entry.slug },
@@ -13,56 +12,51 @@ export async function getStaticPaths() {
   }));
 }
 
-export async function get({ params }: { params: Params }) {
-  const slug = params.slug;
-  const weeks = await getCollection("thisweek");
-  const currentWeek = weeks.find((week) => week.slug === slug);
-  if (!currentWeek) {
-    return {
-      status: 404,
-      body: `No entry found for slug: ${slug}`,
-    };
-  }
+type Week = typeof Astro.props.entry;
 
-  const prevWeek =
-    weeks.find((week) => week.data.endDate === currentWeek.data.startDate) ||
-    null;
-  const nextWeek =
-    weeks.find((week) => week.data.startDate === currentWeek.data.endDate) ||
-    null;
+async function getNeighborWeeks(week: Week) {
+  const startPrevDate = new Date(week.data.startDate);
+  startPrevDate.setDate(startPrevDate.getDate() - 7);
+  const prevWeekYear = startPrevDate.getFullYear();
+  
+  const endNextDate = new Date(week.data.endDate);
+  const nextWeekYear = endNextDate.getFullYear();
+  
+  // Return in format: "YYYY/MM-DD" to correctly match ID of posts.
+  const startNext = `${nextWeekYear}/${endNextDate.toISOString().slice(5, 10)}`;
+  const startPrev = `${prevWeekYear}/${startPrevDate.toISOString().slice(5, 10)}`;
 
-  return {
-    status: 200,
-    body: {
-      prevWeek,
-      nextWeek,
-      entry: currentWeek,
-    },
-  };
+  const nextWeek = await getEntry("thisweek", startNext);
+  const prevWeek = await getEntry("thisweek", startPrev);
+
+  console.log(`Next week: ${JSON.stringify(nextWeek, null, 2)}`);
+  console.log(`Previous week: ${JSON.stringify(prevWeek, null, 2)}`);
+
+  return {prevWeek, nextWeek};
 }
 
-const slug = Astro.params.slug;
-const response = await fetch(`/thisweek/${slug}`);
-const { entry, prevWeek, nextWeek } = await response.json();
+const { entry } = Astro.props;
+const { prevWeek, nextWeek} = await getNeighborWeeks(entry);
 const { Content } = await entry.render();
+
 const startDate = entry.data.startDate;
 const endDate = entry.data.endDate;
+const lastUpdated = entry.data.lastUpdated;
 ---
 
 <BaseLayout pageTitle={`Week of ${startDate}`}>
-  <div
-    class="font-code_mono text-sm bg-[rgba(220,204,204,0.4)] rounded-lg p-4 mb-4 shadow"
-  >
+  <div class="font-code_mono text-sm bg-[rgba(220,204,204,0.4)] rounded-lg p-4 mb-4 shadow" >
     <h2>status</h2>
     <div class="grid grid-cols-[auto,1fr]">
       <div>
         <p>
           last updated: <span class="italic underline"
             >{
-              new Date().toLocaleDateString("en-US", {
+              new Date(lastUpdated).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
+                timeZone: 'UTC'
               })
             }</span
           >
@@ -74,6 +68,7 @@ const endDate = entry.data.endDate;
                 year: "numeric",
                 month: "long",
                 day: "numeric",
+                timeZone: 'UTC'
               })
             }</span
           > to <span class="italic underline"
@@ -82,6 +77,7 @@ const endDate = entry.data.endDate;
                 year: "numeric",
                 month: "long",
                 day: "numeric",
+                timeZone: 'UTC'
               })
             }</span
           >
@@ -90,10 +86,10 @@ const endDate = entry.data.endDate;
       <div class="flex flex-col items-end">
         <p>
           {
-            nextWeek ? (
+            nextWeek && Object.keys(nextWeek).length > 0 ? (
               <a
                 href={`/thisweek/${nextWeek.slug}`}
-                class="text-blue-600 hover:underline"
+                class="hover:underline"
               >
                 &lt; next week
               </a>
@@ -104,10 +100,10 @@ const endDate = entry.data.endDate;
         </p>
         <p>
           {
-            prevWeek ? (
+            prevWeek && Object.keys(prevWeek).length > 0 ? (
               <a
                 href={`/thisweek/${prevWeek.slug}`}
-                class="text-blue-600 hover:underline"
+                class="hover:underline"
               >
                 prev week &gt;
               </a>
@@ -119,7 +115,7 @@ const endDate = entry.data.endDate;
       </div>
     </div>
   </div>
-  <div>
+  <div class="p-4">
     <article class="prose">
       <Content />
     </article>
