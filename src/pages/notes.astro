@@ -31,7 +31,10 @@ const postsByYear = groupPostsByYear(allPosts);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="py-4 px-4 font-barlow">
+  <div>
+    <p>Also posting on <a href="https://vladrachev.substack.com/" class="underline">substack</a> "for the algorithm", as the youth say</p>
+  </div>
+  <div class="py-4 font-barlow">
     {Object.entries(postsByYear).sort((a, b) => parseInt(b[0]) - parseInt(a[0])).map(([year, posts]) => (
       <details open class="mb-4">
         <summary><span class="font-bold">{year}</span></summary>

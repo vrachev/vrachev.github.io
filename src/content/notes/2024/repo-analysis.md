@@ -1,20 +1,17 @@
 ---
-title: "Repo Analysis (working title)"
+title: "A Look into the Most Starred Github Repos"
 pubDate: 2024-03-05
 ---
-# Repo Analysis (working title)
 
-Instead of writing a bunch of words, this edition will be mosty charts and tables (yay pictures!).
+In our never-ending quest to improve and expand our deal sourcing, I recently started a project to ingest GitHub data and see what we can find there. We already have a number of portfolio companies that began as OS projects, such as [Mermaid Chart](https://www.mermaidchart.com/), creators of [Mermaid.js](https://github.com/mermaid-js/mermaid), and [Pydantic](https://pydantic.dev/), both of which are used by or directly impact millions of people. In total, around 20% of our portfolio companies began as OS projects before becoming actual companies, another 20% started their companies with the main technology built as open-source, and a good chunk of the rest are building at least some part of their product in the open. The prominence of OS in the dev tools / dev infrastructure space is no surprise, and our own investments further support that. It's also why we think there's a lot of sourcing potential in ingesting data from open-source ecosystems, starting with Github, but also Gitlab and others.
 
-In our never-ending quest to improve and expand our deal sourcing, I recently started a project to ingest GitHub data and see what we can find there. We already have a number of portfolio companies that began as OS projects: notably [Mermaid Chart](https://www.mermaidchart.com/), creators of [mermaid.js](https://github.com/mermaid-js/mermaid), [Pydantic](https://pydantic.dev/) and others). In total, around 20% of our portfolio companies began as OS projects before becoming a company, another 20% started their companies with the main technology built as an open source product, and a good chunk of the rest are builting at least some part of their product in the open. The prominence of OS in the dev tools / dev infrastructure space is no surprise, and our own investments further show that. It's also why we think there's a lot of sourcing potential by incorporating ecosystem aggregators, starting with GitHub, but also GitLab and others.
+There's lots to be said and argued on the subject of open source - its definition and the various licenses, creator/user relationships, the role of commercial entities in the ecosystem, whether startups should OS their projects and more. I'm not going to delve into that in this post, but for clarification, when I refer to open-source I'm using the layperson definition and including things like open-core and source-available.
 
-There's lots to be said and argued about on the subject of open source - its definition and the various licenses, creator/user relationships, the role of commercial entities in the ecosystem, whether startups should OS their projects and more. I'm not going to delve into that in this post, but for clarification, when I refer to open-source I'm using the layperson definition and including things like open-core and source-available.
-
-Now the fun stuff! As part of my work on this project, I also cooked up some fun charts and tables around the most popular repos on GitHub, measured simply by star count. All the data and code can be accessed in this project. Feel free to run yourself or create your own charts. 
+Now the fun stuff! As part of my work on this project, I also cooked up some fun charts and tables around the most popular repos on GitHub, measured simply by star count. All the data and code can be accessed [in this project](https://github.com/vrachev/github-repo-analysis). Feel free to run yourself or create your own charts. 
 
 ## Top-line Stats
 
-I gathered the list of repos in Github over the past 5 years with more than 100 stars. Naturally, we expect as more time passes more repos will cross that mark, and that's what we get
+I gathered the list of repos in Github over the past 5 years with more than 100 stars. Naturally, we expect as more time passes more repos will cross that mark, and that's indeed what we get:
 ```
 Number of repositories in 2019: 34232
 Number of repositories in 2020: 33191
@@ -23,7 +20,13 @@ Number of repositories in 2022: 19910
 Number of repositories in 2023: 15416
 ```
 
-In total, that adds up to
+I also plotted this out to see the growth over time
+
+![Star count by month for all years](@/public/post-images/repo-analysis/stars_by_month_all_years.png)
+
+No idea what’s up with the the yearly peaks in the early months (Feb/March/April). I thought I had duplicate data at first, but that wasn't the case. If anyone has any theories I'd love to hear them. Might just be noise, seeing as it’s not quite as prevalent in the 5,000 star line.
+
+Looking at the total over the last 5 years, we have:
 ```
 Total number of repositories with stars > 100: 127,739
 Total number of repositories with stars > 1000: 12,960
@@ -31,36 +34,101 @@ Total number of repositories with stars > 5000: 1,982
 Total number of repositories with stars > 25000: 184
 ```
 
-127k repos with 100 stars in 5 years is pretty crazy to me. Something something "networks".
+127k repos with 100 stars in 5 years is pretty crazy to me. Something something "networks". I’d be curious to get some data of user growth, and growth in user propensity to star projects or engage with Github in a more social way. I also wonder if “fake” stars contribute here meaningfully. This is relevant because star count is used as a proxy for popularity/traction/growth, particularly in pitch decks. There’s a great [post from Dagster](https://dagster.io/blog/fake-stars) where they measure “fake” stars in projects and dig into the Github star black market.
 
-Here's a table with the top 25 most starred repos in each of the last 5 years
+For fun, here’s a table of the most starred repos in the last 5 years:
 
-| 2019                                                                                               | 2020                                                                                                                                    | 2021                                                                                                | 2022                                                                                             | 2023                                                                                   |
-| :------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------- |
-| 268662 stars - [996.ICU](https://github.com/996icu/996.ICU)                                        | 122530 stars - [fucking-algorithm](https://github.com/labuladong/fucking-algorithm)                                                     | 68592 stars - [bun](https://github.com/oven-sh/bun)                                                 | 123912 stars - [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) | 158507 stars - [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)              |
-| 102748 stars - [PowerToys](https://github.com/microsoft/PowerToys)                                 | 80474 stars - [Web-Dev-For-Beginners](https://github.com/microsoft/Web-Dev-For-Beginners)                                               | 64666 stars - [ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners)                     | 100774 stars - [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts)           | 66859 stars - [node](https://github.com/base-org/node)                                 |
-| 84673 stars - [GitHub-Chinese-Top-Charts](https://github.com/GrowingGit/GitHub-Chinese-Top-Charts) | 69269 stars - [excalidraw](https://github.com/excalidraw/excalidraw)                                                                    | 56918 stars - [sway](https://github.com/FuelLabs/sway)                                              | 78147 stars - [langchain](https://github.com/langchain-ai/langchain)                             | 62787 stars - [ChatGPT-Next-Web](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web)   |
-| 75409 stars - [tauri](https://github.com/tauri-apps/tauri)                                         | 67052 stars - [yt-dlp](https://github.com/yt-dlp/yt-dlp)                                                                                | 46873 stars - [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy)                                   | 64374 stars - [hello-algo](https://github.com/krahets/hello-algo)                                | 61914 stars - [gpt4all](https://github.com/nomic-ai/gpt4all)                           |
-| 73705 stars - [app-ideas](https://github.com/florinpop17/app-ideas)                                | 65849 stars - [Microsoft-Activation-Scripts](https://github.com/massgravel/Microsoft-Activation-Scripts)                                | 46837 stars - [uptime-kuma](https://github.com/louislam/uptime-kuma)                                | 56984 stars - [whisper](https://github.com/openai/whisper)                                       | 60884 stars - [the-algorithm](https://github.com/twitter/the-algorithm)                |
-| 64474 stars - [code-server](https://github.com/coder/code-server)                                  | 63586 stars - [vite](https://github.com/vitejs/vite)                                                                                    | 41905 stars - [cs-self-learning](https://github.com/PKUFlyingPig/cs-self-learning)                  | 54415 stars - [openai-cookbook](https://github.com/openai/openai-cookbook)                       | 55239 stars - [system-design-101](https://github.com/ByteByteGoHq/system-design-101)   |
-| 63628 stars - [supabase](https://github.com/supabase/supabase)                                     | 63525 stars - [github-readme-stats](https://github.com/anuraghazra/github-readme-stats)                                                 | 40466 stars - [zx](https://github.com/google/zx)                                                    | 48863 stars - [awesome-chatgpt-prompts-zh](https://github.com/PlexPt/awesome-chatgpt-prompts-zh) | 54032 stars - [gpt4free](https://github.com/xtekky/gpt4free)                           |
-| 62371 stars - [devops-exercises](https://github.com/bregman-arie/devops-exercises)                 | 60273 stars - [rustdesk](https://github.com/rustdesk/rustdesk)                                                                          | 40422 stars - [astro](https://github.com/withastro/astro)                                           | 41944 stars - [Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide)    | 52290 stars - [gpt_academic](https://github.com/binary-husky/gpt_academic)             |
-| 59860 stars - [playwright](https://github.com/microsoft/playwright)                                | 59203 stars - [HowToCook](https://github.com/Anduin2017/HowToCook)                                                                      | 36966 stars - [fuels-rs](https://github.com/FuelLabs/fuels-rs)                                      | 36395 stars - [Open-Assistant](https://github.com/LAION-AI/Open-Assistant)                       | 52110 stars - [llama.cpp](https://github.com/ggerganov/llama.cpp)                      |
-| 59134 stars - [hoppscotch](https://github.com/hoppscotch/hoppscotch)                               | 56702 stars - [Ventoy](https://github.com/ventoy/Ventoy)                                                                                | 36516 stars - [ColossalAI](https://github.com/hpcaitech/ColossalAI)                                 | 35078 stars - [stablediffusion](https://github.com/Stability-AI/stablediffusion)                 | 50511 stars - [ui](https://github.com/shadcn-ui/ui)                                    |
-| 58915 stars - [javascript-questions](https://github.com/lydiahallie/javascript-questions)          | 55381 stars - [design-resources-for-developers](https://github.com/bradtraversy/design-resources-for-developers)                        | 36513 stars - [fuels-ts](https://github.com/FuelLabs/fuels-ts)                                      | 33742 stars - [text-generation-webui](https://github.com/oobabooga/text-generation-webui)        | 50465 stars - [llama](https://github.com/facebookresearch/llama)                       |
-| 58697 stars - [v2rayN](https://github.com/2dust/v2rayN)                                            | 45432 stars - [yolov5](https://github.com/ultralytics/yolov5)                                                                           | 34143 stars - [GFPGAN](https://github.com/TencentARC/GFPGAN)                                        | 31968 stars - [pocketbase](https://github.com/pocketbase/pocketbase)                             | 49346 stars - [gpt-engineer](https://github.com/gpt-engineer-org/gpt-engineer)         |
-| 50167 stars - [Real-Time-Voice-Cloning](https://github.com/CorentinJ/Real-Time-Voice-Cloning)      | 44640 stars - [fuel-core](https://github.com/FuelLabs/fuel-core)                                                                        | 33332 stars - [MockingBird](https://github.com/babysor/MockingBird)                                 | 30644 stars - [run](https://github.com/The-Run-Philosophy-Organization/run)                      | 48056 stars - [privateGPT](https://github.com/imartinez/privateGPT)                    |
-| 48548 stars - [act](https://github.com/nektos/act)                                                 | 44040 stars - [annotated_deep_learning_paper_implementations](https://github.com/labmlai/annotated_deep_learning_paper_implementations) | 32041 stars - [novu](https://github.com/novuhq/novu)                                                | 29885 stars - [nanoGPT](https://github.com/karpathy/nanoGPT)                                     | 43434 stars - [ollama](https://github.com/ollama/ollama)                               |
-| 46572 stars - [rich](https://github.com/Textualize/rich)                                           | 42131 stars - [hackingtool](https://github.com/Z4nzu/hackingtool)                                                                       | 31586 stars - [tldraw](https://github.com/tldraw/tldraw)                                            | 29480 stars - [localsend](https://github.com/localsend/localsend)                                | 42671 stars - [segment-anything](https://github.com/facebookresearch/segment-anything) |
-| 46520 stars - [ghidra](https://github.com/NationalSecurityAgency/ghidra)                           | 39219 stars - [type-challenges](https://github.com/type-challenges/type-challenges)                                                     | 30295 stars - [slidev](https://github.com/slidevjs/slidev)                                          | 28803 stars - [llama_index](https://github.com/run-llama/llama_index)                            | 41327 stars - [open-interpreter](https://github.com/KillianLucas/open-interpreter)     |
-| 45741 stars - [leetcode-master](https://github.com/youngyangyang04/leetcode-master)                | 36773 stars - [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)                                                                    | 29407 stars - [modern-unix](https://github.com/ibraheemdev/modern-unix)                             | 28643 stars - [HowToLiveLonger](https://github.com/geekan/HowToLiveLonger)                       | 38121 stars - [ChatGLM-6B](https://github.com/THUDM/ChatGLM-6B)                        |
-| 41877 stars - [powerlevel10k](https://github.com/romkatv/powerlevel10k)                            | 35582 stars - [alist](https://github.com/alist-org/alist)                                                                               | 28388 stars - [AI-For-Beginners](https://github.com/microsoft/AI-For-Beginners)                     | 28533 stars - [whisper.cpp](https://github.com/ggerganov/whisper.cpp)                            | 36624 stars - [screenshot-to-code](https://github.com/abi/screenshot-to-code)          |
-| 40845 stars - [zustand](https://github.com/pmndrs/zustand)                                         | 34532 stars - [Docker-OSX](https://github.com/sickcodes/Docker-OSX)                                                                     | 28320 stars - [spacedrive](https://github.com/spacedriveapp/spacedrive)                             | 28266 stars - [AFFiNE](https://github.com/toeverything/AFFiNE)                                   | 36271 stars - [manifesto](https://github.com/opentofu/manifesto)                       |
-| 40483 stars - [30-Days-Of-JavaScript](https://github.com/Asabeneh/30-Days-Of-JavaScript)           | 34519 stars - [hello-algorithm](https://github.com/geekxh/hello-algorithm)                                                              | 27617 stars - [zed](https://github.com/zed-industries/zed)                                          | 28166 stars - [jsoncrack.com](https://github.com/AykutSarac/jsoncrack.com)                       | 34658 stars - [MetaGPT](https://github.com/geekan/MetaGPT)                             |
-| 39657 stars - [appwrite](https://github.com/appwrite/appwrite)                                     | 34362 stars - [diagrams](https://github.com/mingrammer/diagrams)                                                                        | 27569 stars - [cal.com](https://github.com/calcom/cal.com)                                          | 27978 stars - [system-design](https://github.com/karanpratapsingh/system-design)                 | 34514 stars - [DragGAN](https://github.com/XingangPan/DragGAN)                         |
-| 39622 stars - [starship](https://github.com/starship/starship)                                     | 33190 stars - [50projects50days](https://github.com/bradtraversy/50projects50days)                                                      | 26055 stars - [ToolJet](https://github.com/ToolJet/ToolJet)                                         | 27823 stars - [ChatGPT](https://github.com/acheong08/ChatGPT)                                    | 34450 stars - [TaskMatrix](https://github.com/moymix/TaskMatrix)                       |
-| 39169 stars - [n8n](https://github.com/n8n-io/n8n)                                                 | 32039 stars - [carbon-lang](https://github.com/carbon-language/carbon-lang)                                                             | 25777 stars - [Data-Science-For-Beginners](https://github.com/microsoft/Data-Science-For-Beginners) | 26778 stars - [immich](https://github.com/immich-app/immich)                                     | 32019 stars - [FastChat](https://github.com/lm-sys/FastChat)                           |
-| 39000 stars - [react-hook-form](https://github.com/react-hook-form/react-hook-form)                | 32021 stars - [ImHex](https://github.com/WerWolv/ImHex)                                                                                 | 25528 stars - [memos](https://github.com/usememos/memos)                                            | 24669 stars - [comprehensive-rust](https://github.com/google/comprehensive-rust)                 | 31970 stars - [Fooocus](https://github.com/lllyasviel/Fooocus)                         |
-| 38816 stars - [query](https://github.com/TanStack/query)                                           | 31928 stars - [trpc](https://github.com/trpc/trpc)                                                                                      | 25310 stars - [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN)                                 | 24564 stars - [ruff](https://github.com/astral-sh/ruff)                                          | 30774 stars - [bark](https://github.com/suno-ai/bark)                                  |
+<div style="min-height:443px"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/wCYuZ/embed.js?v=3" charset="utf-8"></script><noscript><img src="https://datawrapper.dwcdn.net/wCYuZ/full.png" alt="" /></noscript></div>
+
+## Repo Topics
+
+Users can annotate their repos with topics, which gives us some interesting details on prevailing themes/languages/categories.
+
+```
+Unique topics in total: 97666
+Unique topics in 2019: 41184
+Unique topics in 2020: 42476
+Unique topics in 2021: 31516
+Unique topics in 2022: 24881
+Unique topics in 2023: 17561
+```
+
+We almost have as any unique topics as we do repos, which I think is kind of interesting.
+
+Of the last 5 years, these are the 25 most popular topics
+
+![25 most popular topics all years > 100 stars](@/public/post-images/repo-analysis/top_25_topics_all_years.png)
+
+Here's the same chart but with a 5,000 star cutoff instead of 100
+
+![25 most popular topics all years > 100 stars](@/public/post-images/repo-analysis/top_25_topics_all_years_5000_stars.png)
+
+Anything stand out?
+1. What is going on with Hacktoberfest? It's an annual month-long event that encourages people to contribute to OS. The reason why it's the top-ranking topic for high-star repos is because those projects already have a lot of visibility, and thus attract attention during the event. Note that topics can be added at any time, so a project like [Rust](https://github.com/rust-lang/rust) can have the tag, even if it wasn't started out as a Hacktoberfest project.
+2. Python is the OS language king. 
+3. Typescript/Javascript parity, on the surface. But when I looked further, there's a clear trend of Typescript supplanting Javascript. In 2019, Javascript appeared 831 repos to Typescript's 620. In 2023, It was 364 for Typescript vs 243 for Javascript. And of those 243, 89 had a Typescript tag in addition. The people have spoken!
+4. ChatGPT shows up in the 5k star chart! Yes, the chart completely changes in 2023.
+
+The top-N charts for 2019-2022 look more or less the same. Then in late 2022 ChatGPT comes to the scene and completely shifts the attention of the open-source community. Take a look below
 
 
+**2022**
+![5 most popular topics 2022 > 100 stars](@/public/post-images/repo-analysis/top_25_topics_2022.png)
+
+**2023**
+![5 most popular topics 2022 > 100 stars](@/public/post-images/repo-analysis/top_25_topics_2023.png)
+
+Craziness. The amount of attention towards LLMs in the Open Source is unlike anything we've seen with any other trend, at least with respect to open source project creation. I wonder how this compares to the early internet days.
+
+In the full jupyter notebook, I also have some charts around exclusive topics (meaning topics appearing in year X but not year Y). I'm not going to add it here, but one of the topics I saw was "NFT", so I wanted to see how it does in all the years
+
+```
+Number of repositories in 2019 with topic 'nft' and stars >= 100: 5
+Number of repositories in 2020 with topic 'nft' and stars >= 100: 7
+Number of repositories in 2021 with topic 'nft' and stars >= 100: 75
+Number of repositories in 2022 with topic 'nft' and stars >= 100: 35
+Number of repositories in 2023 with topic 'nft' and stars >= 100: 0
+```
+
+Yikes! But not surprising.
+
+It was also fun to look at the counts for AI related terms. Here's one
+
+```
+Number of repositories in 2019 with topic 'llm' and stars >= 100: 10
+Number of repositories in 2020 with topic 'llm' and stars >= 100: 8
+Number of repositories in 2021 with topic 'llm' and stars >= 100: 15
+Number of repositories in 2022 with topic 'llm' and stars >= 100: 52
+Number of repositories in 2023 with topic 'llm' and stars >= 100: 663
+```
+
+Note that people can add a topic to a repo whenever, so the pre 2022 repos didn't necessarily have that topic before ChatGPT came out.
+
+Here's another way to look at the above discrepancy between 2022 and 2023 topics
+
+**Top 25 topics in 2023, by percent of repos**
+![Top 25 topics in 2023 vs 2022, by percentiles](@/public/post-images/repo-analysis/selected_topics_in_2023_and_percent_2022.png)
+
+AI topics dominate 2023, Language/Frameworks dominate 2022.
+
+Last chart I have is around repo activity. In this case, inactive repos are those without a commit in the last 30 days.
+
+![Top 25 Active vs Inactive, in 2023](@/public/post-images/repo-analysis/top_25_active_inactive.png)
+
+Not too much to glean, except that many "ChatGPT" repos are toy apps, but fun to look at. The 10 point differential between GPT4 and GPT3 suggests people have moved onto the newer model.
+
+## Languages
+
+Some repos add languages to “topics”, but there’s a more specific “language” field in the repo schema. Github uses [Linguist](https://github.com/github-linguist/linguist) to try and determine the “primary” language in a repo.
+
+It more or less confirms what we’ve seen, primarily the outsized popularity of Python.
+
+![Top 15 Languages in the last 5 years](@/public/post-images/repo-analysis/top-15-languages.png)
+
+This chart is from all 5 years, but I also looked at each year individually. They mostly looked the same with 2 exceptions - one being that Python **dominated** 2023, going from around 23% of 2019-2022 languages to a whopping 34.5% in 2023. No doubt thanks to its monopoly in data science and AI and the onslaught of such projects in 2023. The other trend was the move from Javascript to Typescript, confirming what I mentioned earlier.
+
+<hr/>
+
+That's all I've got for now. Feel free to play around with the data and notebook. I'd like to shout out cursor.sh and ChatGPT/GPT4, who made it a breeze to create these charts. I mostly double checked the data and any calculations, but if you catch any mistakes, I blame AI! 
+
+Kidding of course - please let me know and I'll update mistakes.

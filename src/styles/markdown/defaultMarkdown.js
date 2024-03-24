@@ -88,14 +88,19 @@ module.exports = {
   },
 
   code: {
-    fontFamily: 'Fira Code',
-    backgroundColor: defaultTheme.colors.gray[300],
+    fontFamily: 'Roboto Mono',
+    color: defaultTheme.colors.gray[900],
+    fontSize: defaultTheme.fontSize.sm,
+    paddingTop: defaultTheme.spacing[0],
+    paddingBottom: defaultTheme.spacing[0],
+  },
+
+  pre: {
+    backgroundColor: defaultTheme.colors.gray[200],
+    paddingTop: defaultTheme.spacing[1],
+    paddingBottom: defaultTheme.spacing[1],
     paddingLeft: defaultTheme.spacing[2],
     paddingRight: defaultTheme.spacing[2],
-    paddingTop: defaultTheme.spacing.px,
-    paddingBottom: defaultTheme.spacing.px,
-    borderRadius: defaultTheme.borderRadius.default,
-    fontSize: defaultTheme.fontSize.sm,
   },
 
   hr: {

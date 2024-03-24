@@ -6,7 +6,7 @@ export default {
 		fontFamily: {
 			chubbo: ["Chubbo", "sans-serif"],
 			barlow: ['Barlow', 'sans-serif'],
-			code_mono: ['Source Code Pro', 'mono'],
+			code_mono: ['Roboto Mono', 'mono'],
 		},
 		extend: {
 		},
