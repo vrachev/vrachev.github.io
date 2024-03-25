@@ -101,6 +101,7 @@ module.exports = {
     paddingBottom: defaultTheme.spacing[1],
     paddingLeft: defaultTheme.spacing[2],
     paddingRight: defaultTheme.spacing[2],
+    marginBottom: defaultTheme.spacing[4],
   },
 
   hr: {
@@ -116,6 +117,15 @@ module.exports = {
     fontFamily: 'Barlow',
     fontWeight: defaultTheme.fontWeight.light,
     listStyleType: defaultTheme.listStyleType.disc,
+    listStylePosition: 'outside',
+    marginLeft: defaultTheme.spacing[8],
+    marginTop: defaultTheme.spacing[4],
+    marginBottom: defaultTheme.spacing[4],
+  },
+
+  li: {
+    fontFamily: 'Barlow',
+    fontWeight: defaultTheme.fontWeight.light,
     listStylePosition: 'outside',
     marginLeft: defaultTheme.spacing[8],
     marginTop: defaultTheme.spacing[4],

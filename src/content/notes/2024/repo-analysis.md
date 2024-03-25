@@ -129,6 +129,6 @@ This chart is from all 5 years, but I also looked at each year individually. The
 
 <hr/>
 
-That's all I've got for now. Feel free to play around with the data and notebook. I'd like to shout out cursor.sh and ChatGPT/GPT4, who made it a breeze to create these charts. I mostly double checked the data and any calculations, but if you catch any mistakes, I blame AI! 
+That's all I've got for now. Feel free to play around with the [data and notebook](https://github.com/vrachev/github-repo-analysis). I'd like to shout out cursor.sh and ChatGPT/GPT4, who made it a breeze to create these charts. I mostly double checked the data and any calculations, but if you catch any mistakes, I blame AI! 
 
 Kidding of course - please let me know and I'll update mistakes.

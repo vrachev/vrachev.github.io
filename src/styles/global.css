@@ -14,17 +14,13 @@
 
 @font-face {
   font-family: "Chubbo";
-  src: url('/fonts/chubbo/fonts/Chubbo-Regular.woff2') format('woff2'),
-       url('/fonts/chubbo/fonts/Chubbo-Regular.woff') format('woff'),
-       url('/fonts/chubbo/fonts/Chubbo-Regular.ttf') format('truetype');
+  src: url('/fonts/chubbo/fonts/Chubbo-Regular.woff2') format('woff2');
   font-weight: 400; /* Use numerical value for normal */
 }
 
 @font-face {
   font-family: "Chubbo";
-  src: url('/fonts/chubbo/fonts/Chubbo-Medium.woff2') format('woff2'),
-       url('/fonts/chubbo/fonts/Chubbo-Medium.woff') format('woff'),
-       url('/fonts/chubbo/fonts/Chubbo-Medium.ttf') format('truetype');
+  src: url('/fonts/chubbo/fonts/Chubbo-Medium.woff2') format('woff2');
   font-weight: 500; /* Corrected to numerical value for medium */
 }
 
@@ -54,4 +50,8 @@ h4 {
 
 a:hover {
   color: #9d1b1b;
+}
+
+pre {
+  @apply overflow-x-auto;
 }
