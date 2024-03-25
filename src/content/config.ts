@@ -7,9 +7,6 @@ const notesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     pubDate: z.date(),
-    // description: z.string(),
-    // author: z.string(),
-    // tags: z.array(z.string())
   })
 });
 
@@ -19,9 +16,6 @@ const thisWeekCollection = defineCollection({
     startDate: z.date(),
     endDate: z.date(),
     lastUpdated: z.date(),
-    // description: z.string(),
-    // author: z.string(),
-    // tags: z.array(z.string())
   })
 });
 

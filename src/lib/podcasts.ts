@@ -128,7 +128,6 @@ const yc: Podcast = {
   thoughts: "Short, interesting episodes on startup concepts."
 }
 
-
 const podcasts: Podcast[] = [
   volts,
   thinkingBasketball,

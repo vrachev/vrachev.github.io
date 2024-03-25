@@ -212,23 +212,38 @@ const chipWar: Book = {
   thoughts: "TBD",
 };
 
+const jimSimons: Book = {
+  name: "The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution",
+  author: "Gregory Zuckerman",
+  category: "Finance",
+  url: new URL("https://www.goodreads.com/en/book/show/43889703"),
+  stars: 4,
+  read: new Date("2024-03"),
+  fave: false,
+  finished: true,
+  thoughts: "Interesting book, albeit not the most well written, on the most fascinating Hedge Fund in history. \
+  I give massive props to the author for uncovering so much amazing detail on such a secretive firm. \
+  Must read for anyone who is interested in outlier people/organziations."
+}
 
-const books: { [title: string]: Book } = {
-  [asoiaf.name]: asoiaf,
-  [creativeDestruction.name]: creativeDestruction,
-  [innovatorsDilemma.name]: innovatorsDilemma,
-  [energySwitch.name]: energySwitch,
-  [stalin1.name]: stalin1,
-  [stalin2.name]: stalin2,
-  [changeYourMind.name]: changeYourMind,
-  [snowball.name]: snowball,
-  [steveJobs.name]: steveJobs,
-  [elonMusk.name]: elonMusk,
-  [wildSheepChase.name]: wildSheepChase,
-  [liarsPoker.name]: liarsPoker,
-  [hubris.name]: hubris,
-  [worldAfterCapital.name]: worldAfterCapital,
-  [chipWar.name]: chipWar,
+
+const books: { [variableName: string]: Book } = {
+  asoiaf: asoiaf,
+  creativeDestruction: creativeDestruction,
+  innovatorsDilemma: innovatorsDilemma,
+  energySwitch: energySwitch,
+  stalin1: stalin1,
+  stalin2: stalin2,
+  changeYourMind: changeYourMind,
+  snowball: snowball,
+  steveJobs: steveJobs,
+  elonMusk: elonMusk,
+  wildSheepChase: wildSheepChase,
+  liarsPoker: liarsPoker,
+  hubris: hubris,
+  worldAfterCapital: worldAfterCapital,
+  chipWar: chipWar,
+  jimSimons: jimSimons,
 };
 
 const finishedBooks: { [title: string]: FinishedBook } = Object.fromEntries(
