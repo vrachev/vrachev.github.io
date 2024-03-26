@@ -12,6 +12,31 @@ const sortedPosts = thisWeekPosts.sort((a, b) => {
 // Get the URL of the latest post
 const latestPostUrl = sortedPosts.length > 0 ? `/thisweek/${sortedPosts[0].slug}` : '/';
 
-// Redirect to it
-return Astro.redirect(latestPostUrl);
+// This should work - and it does - however, when hosting on GitHub Pages,
+// an extra "redirect" page is inserted, simply stating "redirecting from x to y".
+// This is accompanied with 1-2 seconds of latency, which is clearly not a great UX.
+// Note, this does not appear on local server.
+// So instead of doing the easy Astro redirect, we will use the traditional script method
+// which does not insert this weird middlelayer.
+// I could not figure out why this is happening or how to fix it, beyond using <script>.
+// return Astro.redirect(latestPostUrl);
 ---
+
+<!-- Store the latestPostUrl in a data attribute
+     This is Astro's way of passing frontmatter vars to the html.
+     Pretty janky but oh well.
+-->
+<div id="redirector" data-url={latestPostUrl}></div>
+
+<script>
+  // Access the latestPostUrl from the data attribute
+  const redirector = document.getElementById('redirector');
+  if (redirector) {
+    const latestPostUrl = redirector.dataset.url;
+    if (typeof latestPostUrl === 'string') {
+      window.location.href = latestPostUrl;
+    }
+  } else {
+    window.location.href = '/404';
+  }
+</script>

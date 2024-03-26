@@ -29,9 +29,6 @@ async function getNeighborWeeks(week: Week) {
   const nextWeek = await getEntry("thisweek", startNext);
   const prevWeek = await getEntry("thisweek", startPrev);
 
-  console.log(`Next week: ${JSON.stringify(nextWeek, null, 2)}`);
-  console.log(`Previous week: ${JSON.stringify(prevWeek, null, 2)}`);
-
   return {prevWeek, nextWeek};
 }
 
