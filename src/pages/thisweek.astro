@@ -12,6 +12,8 @@ const sortedPosts = thisWeekPosts.sort((a, b) => {
 // Get the URL of the latest post
 const latestPostUrl = sortedPosts.length > 0 ? `/thisweek/${sortedPosts[0].slug}` : '/';
 
+// TODO: Fix at some point, if possible
+//
 // This should work - and it does - however, when hosting on GitHub Pages,
 // an extra "redirect" page is inserted, simply stating "redirecting from x to y".
 // This is accompanied with 1-2 seconds of latency, which is clearly not a great UX.
