@@ -30,15 +30,17 @@ const latestPostUrl = sortedPosts.length > 0 ? `/thisweek/${sortedPosts[0].slug}
 -->
 <div id="redirector" data-url={latestPostUrl}></div>
 
-<script>
-  // Access the latestPostUrl from the data attribute
-  const redirector = document.getElementById('redirector');
-  if (redirector) {
-    const latestPostUrl = redirector.dataset.url;
-    if (typeof latestPostUrl === 'string') {
-      window.location.href = latestPostUrl;
+<head>
+  <script defer>
+    // Access the latestPostUrl from the data attribute
+    const redirector = document.getElementById('redirector');
+    if (redirector) {
+      const latestPostUrl = redirector.dataset.url;
+      if (typeof latestPostUrl === 'string') {
+        window.location.href = latestPostUrl;
+      }
+    } else {
+      window.location.href = '/404';
     }
-  } else {
-    window.location.href = '/404';
-  }
-</script>
+  </script>
+</head>
