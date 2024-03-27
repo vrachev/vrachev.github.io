@@ -40,7 +40,7 @@ const postsByYear = groupPostsByYear(allPosts);
         <summary><span class="font-bold">{year}</span></summary>
         <ul class="space-y-1 py-2">
           {posts.map((post) => {
-            const fullSlug = `notes/${post.slug}`;
+            const fullSlug = `/notes/${post.slug}`;
             return (
               <li class="grid grid-cols-[1fr,9fr] ml-6">
                 <p class="">{new Intl.DateTimeFormat('en-US', {month: "short", day: "numeric", timeZone: 'UTC'}).format(new Date(post.data.pubDate))}</p>
