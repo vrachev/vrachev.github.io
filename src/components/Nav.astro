@@ -1,5 +1,17 @@
 ---
 import Logo from "../components/Logo.astro";
+import { getCollection } from 'astro:content';
+
+// Fetch slug for latestPost to link to
+const thisWeekPosts = await getCollection('thisweek');
+
+// Sort posts by startDate in descending order to get the latest post first
+const sortedPosts = thisWeekPosts.sort((a, b) => {
+  return new Date(b.data.startDate).getTime() - new Date(a.data.startDate).getTime();
+});
+
+// Get the slug of the latest post
+const latestPostSlug = sortedPosts.length > 0 ? sortedPosts[0].slug : '';
 ---
 
 <nav class="w-full">
@@ -9,7 +21,7 @@ import Logo from "../components/Logo.astro";
       <a href="/">home</a>
       <a href="/notes">notes</a>
       <a href="/favorites">favorites</a>
-      <a href="/thisweek">this week</a>
+      <a href={`/thisweek/${latestPostSlug}`}>this week</a>
     </div>
   </div>
 </nav>

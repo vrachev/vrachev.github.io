@@ -14,31 +14,33 @@ export async function getStaticPaths() {
 
 type Week = typeof Astro.props.entry;
 
-async function getNeighborWeeks(week: Week) {
-  const startPrevDate = new Date(week.data.startDate);
-  startPrevDate.setDate(startPrevDate.getDate() - 7);
-  const prevWeekYear = startPrevDate.getFullYear();
-  
-  const endNextDate = new Date(week.data.endDate);
-  const nextWeekYear = endNextDate.getFullYear();
-  
-  // Return in format: "YYYY/MM-DD" to correctly match ID of posts.
-  const startNext = `${nextWeekYear}/${endNextDate.toISOString().slice(5, 10)}`;
-  const startPrev = `${prevWeekYear}/${startPrevDate.toISOString().slice(5, 10)}`;
+async function getNeighborWeeks(week: Week, weeks: any[]) {
+  // Sort weeks by startDate
+  const sortedWeeks = weeks.sort((a, b) => new Date(a.data.startDate).getTime() - new Date(b.data.startDate).getTime());
 
-  const nextWeek = await getEntry("thisweek", startNext);
-  const prevWeek = await getEntry("thisweek", startPrev);
+  // Find the current week index
+  const currentWeekIndex = sortedWeeks.findIndex(w => w.slug === week.slug);
 
-  return {prevWeek, nextWeek};
+  // Determine the previous and next week entries
+  const prevWeek = currentWeekIndex > 0 ? sortedWeeks[currentWeekIndex - 1] : null;
+  const nextWeek = currentWeekIndex < sortedWeeks.length - 1 ? sortedWeeks[currentWeekIndex + 1] : null;
+
+  // Fetch the full entries for previous and next weeks
+  const prevWeekEntry = prevWeek ? await getEntry("thisweek", prevWeek.slug) : null;
+  const nextWeekEntry = nextWeek ? await getEntry("thisweek", nextWeek.slug) : null;
+
+  return { prevWeek: prevWeekEntry, nextWeek: nextWeekEntry };
 }
 
 const { entry } = Astro.props;
-const { prevWeek, nextWeek} = await getNeighborWeeks(entry);
+const weeks = await getCollection("thisweek");
+const { prevWeek, nextWeek } = await getNeighborWeeks(entry, weeks);
 const { Content } = await entry.render();
 
 const startDate = entry.data.startDate;
 const endDate = entry.data.endDate;
 const lastUpdated = entry.data.lastUpdated;
+
 ---
 
 <BaseLayout pageTitle={"this week"}>
